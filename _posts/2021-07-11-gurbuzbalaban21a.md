@@ -29,7 +29,19 @@ x_k &= x_{k-1} - \eta\nabla\tilde{f}_k(x_k - 1), \\
 \end{align}
 $$
 
+**Remark:** One peculiar property of SGD is that depending on the choice of $\eta$ and $b$, the algorithm can exhibit significantly different behaviors in terms of the performance on unseen test data.
+
+The important properties of SGD that are currently known are as follows
+- larger $\eta/b$ yields better generalization;
+- the flat-minima argument, they concluded that the ratio η/b determines the flatness of the minima found by SGD;
+- a power law distribution to the empirical spectral density of individual layers and illustrated that heaviertailed weight matrices indicate better generalization.
+
 ### Main Results
+
+In this paper, the authors argue that these three seemingly unrelated perspectives for generalization are deeply linked to each other.
+
+**Claim:** depending on the choice of the algorithm parameters $\eta$ and $b$, the dimension $d$, and the curvature of $f$, SGD exhibits a heavy-tail phenomenon, meaning that the law of the iterates converges to a heavy-tailed distribution.
+
 
 ### Experimental Results
 
@@ -44,3 +56,7 @@ $$
 <div style="text-align: center;">
 <img src="https://user-images.githubusercontent.com/10952293/125183425-8e25c380-e251-11eb-98fd-b37fb25283eb.png" width="100%">
 </div>
+
+### References
+- Gurbuzbalaban, M., Simsekli, U. &amp; Zhu, L.. (2021). The Heavy-Tail Phenomenon in SGD. <i>Proceedings of the 38th International Conference on Machine Learning</i>, in <i>Proceedings of Machine Learning Research</i> 139:3964-3975 Available from http://proceedings.mlr.press/v139/gurbuzbalaban21a.html.
+
