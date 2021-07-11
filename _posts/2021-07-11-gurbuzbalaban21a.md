@@ -74,7 +74,7 @@ h(s) &\coloneqq \lim_{k\to\infty}\Big(\mathbb{E}\Big[\lVert M_kM_{k-1}\dots M_1\
 \end{align}
 $$
 
-**_Theorem 2_** _Consider the SGD iterations. If $\rho<0$ and there exists a unique positive $\alpha$ such that $h(\alpha)=1$, then SGD admits a unique stationary solution $x_\infty$ and the SGD iterations converge to $x_\infty$ in distribution, where the distribution of $x_\infty$ satisfies_
+**_Theorem 2_** _Consider the SGD iterations. If $\rho<0$ and there exists a unique positive $\alpha$ such that $h(\alpha)=1$, then SGD admits a unique stationary solution $x\_{\infty}$ and the SGD iterations converge to $x\_{\infty}$ in distribution, where the distribution of $x\_{\infty}$ satisfies_
 
 $$
 \lim_{t\to\infty}t^\alpha\Pr\Big(u^Tx_\infty > t \Big) = e_\alpha(u), \quad u\in\mathbb{S}^{d-1},
