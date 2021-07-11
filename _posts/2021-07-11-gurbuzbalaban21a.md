@@ -79,6 +79,7 @@ $$
 $$
 \lim_{t\to\infty}t^\alpha\Pr\Big(u^Tx_\infty > t \Big) = e_\alpha(u), \quad u\in\mathbb{S}^{d-1},
 $$
+
 for some positive and continuous function $e_\alpha$ on $\mathbb{S}^{d-1}$.
 
 
