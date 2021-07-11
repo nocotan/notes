@@ -42,6 +42,45 @@ In this paper, the authors argue that these three seemingly unrelated perspectiv
 
 **Claim:** depending on the choice of the algorithm parameters $\eta$ and $b$, the dimension $d$, and the curvature of $f$, SGD exhibits a heavy-tail phenomenon, meaning that the law of the iterates converges to a heavy-tailed distribution.
 
+#### Problem Setup
+
+Focus on the case when $f$ is a quadratic, which arises in linear regression:
+
+$$
+\begin{equation}
+\min_{x\in\mathbb{R}^d}F(x) \coloneqq \frac{1}{2}\mathbb{E}_{(a,y)\sim\mathcal{D}}\Big[(a^Tx - y)^2\Big],
+\end{equation}
+$$
+
+The curvature, i.e. the value of second partial derivatives, of this objective around a minimum is determined by the Hessian matrix $\mathbb{E}[aa^T]$ which depends on the distribution of $a$. In this setting, SGD with batch-size $b$ leads to the iterations
+
+$$
+\begin{align}
+x_k &= M_kx_{k-1} + q_k\quad \text{with}\quad M_k\coloneqq I-\frac{\eta}{b}H_k, \\
+H_k &\coloneqq \sum_{i\in\Omega_k}a_ia_i^T,\quad q_k\coloneqq \frac{\eta}{b}\sum_{i\in\Omega_k}a_iy_i,
+\end{align}
+$$
+
+where $\Omega_k\coloneqq \lbrace b(k-1) + 1, b(k-1) + 2,\dots bk \rbrace$ with $|\Omega_k|=b$.
+The following assumptions on the data throughout the paper:
+
+- (A1) $a_i$'s are i.i.d. with a continuous distribution supported on $\mathbb{R}^d$ with all the moments finite.
+- (A2) $y_i$ are i.i.d with a continuous density whose support is $\mathbb{R}$ with all the moments finite.
+
+$$
+\begin{align}
+h(s) &\coloneqq \lim_{k\to\infty}\Big(\mathbb{E}\Big[\lVert M_kM_{k-1}\dots M_1\rVert \Big]\Big)^{\frac{1}{k}}, \\
+\rho &\coloneqq \lim_{k\to\infty}(2k)^{-1}\log\Big(\text{largest eigenvalue of $\prod^T_k\prod_k$}\Big)
+\end{align}
+$$
+
+**_Theorem 2_** _Consider the SGD iterations. If $\rho<0$ and there exists a unique positive $\alpha$ such that $h(\alpha)=1$, then SGD admits a unique stationary solution $x_\infty$ and the SGD iterations converge to $x_\infty$ in distribution, where the distribution of $x_\infty$ satisfies_
+
+$$
+\lim_{t\to\infty}t^\alpha\Pr\Big(u^Tx_\infty > t \Big) = e_\alpha(u), \quad u\in\mathbb{S}^{d-1},
+$$
+for some positive and continuous function $e_\alpha$ on $\mathbb{S}^{d-1}$.
+
 
 ### Experimental Results
 
